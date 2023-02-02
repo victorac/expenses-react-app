@@ -1,4 +1,5 @@
-import ExpenseList from "./components/ExpenseList";
+import ExpenseList from "./components/expenses/ExpenseList";
+import NewExpense from "./components/expenses/NewExpense";
 
 function App() {
   const expenses = [
@@ -11,10 +12,15 @@ function App() {
       title: "Water",
       date: new Date(),
       amount: "1249.67",
-    }
-  ]
+    },
+  ];
 
-  return <ExpenseList expenses={expenses} />;
+  return (
+    <div>
+      <NewExpense />
+      <ExpenseList expenses={expenses} />
+    </div>
+  );
 }
 
 export default App;
