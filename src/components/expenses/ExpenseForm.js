@@ -1,18 +1,77 @@
-const ExpenseForm = () => {
-    return <form className="flex gap-10 flex-wrap mb-1 text-left">
+import { useState } from "react";
+
+const ExpenseForm = ({onSubmitExpense}) => {
+    const [enteredTitle, setEnteredTitle] = useState("");
+    const [enteredAmount, setEnteredAmount] = useState("");
+    const [enteredDate, setEnteredDate] = useState("");
+    // const [userInput, setUserInput] = useState({
+    //     title: "",
+    //     amount: "",
+    //     date: "",
+    // });
+    // console.log(userInput);
+
+    const titleChangeHandler = (event) => {
+        // console.log(event.target.value);
+        setEnteredTitle(event.target.value);
+        // setUserInput((prevState) => {
+        //     return {
+        //         ...prevState,
+        //         title: event.target.value,
+        //     };
+        // });
+    };
+
+    const amountChangeHandler = (event) => {
+        // console.log(event.target.value);
+        setEnteredAmount(event.target.value);
+        // setUserInput((prevState) => {
+        //     return {
+        //         ...prevState,
+        //         amount: event.target.value,
+        //     };
+        // });
+    };
+
+    const dateChangeHandler = (event) => {
+        // console.log(event.target.value);
+        setEnteredDate(event.target.value);
+        // setUserInput((prevState) => {
+        //     return {
+        //         ...prevState,
+        //         date: event.target.value,
+        //     };
+        // });
+    };
+
+    const submitHandler = (event) => {
+        event.preventDefault();
+        const expenseData = {
+            title: enteredTitle,
+            amount: enteredAmount,
+            date: new Date(enteredDate),
+        };
+        // console.log(expenseData);
+        onSubmitExpense(expenseData);
+        setEnteredTitle("");
+        setEnteredAmount("");
+        setEnteredDate("");
+    }
+
+    return <form onSubmit={submitHandler} className="flex gap-10 flex-wrap mb-1 text-left">
         <div className="flex flex-col gap-1">
             <label className="font-bold">Title</label>
-            <input className="w-80 px-1" type="text"  />
+            <input value={enteredTitle} onChange={titleChangeHandler} className="w-80 px-1" type="text"  />
         </div>
         <div className="flex flex-col gap-1">
             <label className="font-bold">Amount</label>
-            <input className="w-80 px-1" type="number" min={0.01} step={0.1}/>
+            <input value={enteredAmount} onChange={amountChangeHandler} className="w-80 px-1" type="number" min={0.01} step={0.01}/>
         </div>
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 ">
             <label className="font-bold">Date</label>
-            <input className="w-80 max-w-full px-1" type="date" min="2019-01-01" max="2023-12-31" />
+            <input value={enteredDate} onChange={dateChangeHandler} className="w-80 max-w-full px-1" type="date" min="2019-01-01" max="2023-12-31" />
         </div>
-        <button className= "border-2 border-black px-4 rounded-lg bg-sky-100 hover:bg-sky-200">Add Expense</button>
+        <button type="submit" className= "border-2 border-black px-4 rounded-lg bg-sky-100 hover:bg-sky-200 mr-2">Add Expense</button>
     </form>
 }
 

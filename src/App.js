@@ -15,9 +15,14 @@ function App() {
     },
   ];
 
+  const onExpenseData = (expenseData) => {
+    expenses.push(expenseData);
+    console.log(expenseData);
+  }
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onExpenseData={onExpenseData} />
       <ExpenseList expenses={expenses} />
     </div>
   );
