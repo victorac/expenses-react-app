@@ -13,6 +13,21 @@ function App() {
       date: new Date(),
       amount: "1249.67",
     },
+    {
+      title: "T-shirt",
+      date: new Date("01-01-2023"),
+      amount: "250.67",
+    },
+    {
+      title: "Car",
+      date: new Date("01-01-2022"),
+      amount: "2500.67",
+    },
+    {
+      title: "Bread",
+      date: new Date("06-06-2022"),
+      amount: "785.67",
+    },
   ];
 
   const onExpenseData = (expenseData) => {
