@@ -41,8 +41,8 @@ function App() {
   const onExpenseData = (expenseData) => {
     setExpenses((prevExpenses) => {
       return [expenseData, ...prevExpenses];
-    })
-  }
+    });
+  };
 
   return (
     <div>
