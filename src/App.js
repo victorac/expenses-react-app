@@ -1,44 +1,53 @@
-import ExpenseList from "./components/expenses/ExpenseList";
+import { useState } from "react";
+import Expenses from "./components/expenses/Expenses";
 import NewExpense from "./components/expenses/NewExpense";
 
+const DUMMY_EXPENSES = [
+  {
+    id: 0,
+    title: "Car Insurance",
+    date: new Date(),
+    amount: "249.67",
+  },
+  {
+    id: 1,
+    title: "Water",
+    date: new Date(),
+    amount: "1249.67",
+  },
+  {
+    id: 2,
+    title: "T-shirt",
+    date: new Date("01-01-2023"),
+    amount: "250.67",
+  },
+  {
+    id: 3,
+    title: "Car",
+    date: new Date("01-01-2022"),
+    amount: "2500.67",
+  },
+  {
+    id: 4,
+    title: "Bread",
+    date: new Date("06-06-2022"),
+    amount: "785.67",
+  },
+];
+
 function App() {
-  const expenses = [
-    {
-      title: "Car Insurance",
-      date: new Date(),
-      amount: "249.67",
-    },
-    {
-      title: "Water",
-      date: new Date(),
-      amount: "1249.67",
-    },
-    {
-      title: "T-shirt",
-      date: new Date("01-01-2023"),
-      amount: "250.67",
-    },
-    {
-      title: "Car",
-      date: new Date("01-01-2022"),
-      amount: "2500.67",
-    },
-    {
-      title: "Bread",
-      date: new Date("06-06-2022"),
-      amount: "785.67",
-    },
-  ];
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
   const onExpenseData = (expenseData) => {
-    expenses.push(expenseData);
-    console.log(expenseData);
+    setExpenses((prevExpenses) => {
+      return [expenseData, ...prevExpenses];
+    })
   }
 
   return (
     <div>
       <NewExpense onExpenseData={onExpenseData} />
-      <ExpenseList expenses={expenses} />
+      <Expenses expenses={expenses} />
     </div>
   );
 }

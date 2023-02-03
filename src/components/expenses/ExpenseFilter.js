@@ -11,7 +11,6 @@ function ExpenseFilter({ expenses, year, onSelectYear }) {
       .map((el) => el.amount)
       .reduce((prev, curr) => Number(curr) + Number(prev));
   }
-  console.log(expenses);
   const monthData = [
     { percentage: 0, month: "Jan" },
     { percentage: 0, month: "Feb" },
