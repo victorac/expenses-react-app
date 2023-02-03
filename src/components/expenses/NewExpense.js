@@ -8,20 +8,21 @@ const NewExpense = ({ onExpenseData }) => {
   const onSubmitExpense = (enteredExpenseData) => {
     const expenseData = { ...enteredExpenseData, id: Date.now() };
     onExpenseData(expenseData);
+    setShowForm(false);
   };
 
   const addNewExpenseHandler = () => {
     setShowForm(true);
   };
 
-  const onFinish = () => {
+  const onCancel = () => {
     setShowForm(false);
   };
 
   return (
     <Card className="w-[50rem] max-w-[95%] bg-red-100 p-4 items-center mx-auto my-8">
       {showForm && (
-        <ExpenseForm onSubmitExpense={onSubmitExpense} onFinish={onFinish} />
+        <ExpenseForm onSubmitExpense={onSubmitExpense} onCancel={onCancel} />
       )}
       {!showForm && (
         <button

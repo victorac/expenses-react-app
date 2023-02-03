@@ -1,54 +1,21 @@
 import { useState } from "react";
 
-const ExpenseForm = ({ onSubmitExpense, onFinish }) => {
+const ExpenseForm = ({ onSubmitExpense, onCancel }) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
-  // const [userInput, setUserInput] = useState({
-  //     title: "",
-  //     amount: "",
-  //     date: "",
-  // });
-  // console.log(userInput);
 
   const titleChangeHandler = (event) => {
-    // console.log(event.target.value);
     setEnteredTitle(event.target.value);
-    // setUserInput((prevState) => {
-    //     return {
-    //         ...prevState,
-    //         title: event.target.value,
-    //     };
-    // });
   };
 
   const amountChangeHandler = (event) => {
-    // console.log(event.target.value);
     setEnteredAmount(event.target.value);
-    // setUserInput((prevState) => {
-    //     return {
-    //         ...prevState,
-    //         amount: event.target.value,
-    //     };
-    // });
   };
 
   const dateChangeHandler = (event) => {
-    // console.log(event.target.value);
     setEnteredDate(event.target.value);
-    // setUserInput((prevState) => {
-    //     return {
-    //         ...prevState,
-    //         date: event.target.value,
-    //     };
-    // });
   };
-
-  // const resetData = () => {
-  //     setEnteredTitle("");
-  //     setEnteredAmount("");
-  //     setEnteredDate("");
-  // }
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -57,14 +24,11 @@ const ExpenseForm = ({ onSubmitExpense, onFinish }) => {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-    // console.log(expenseData);
     onSubmitExpense(expenseData);
-    // resetData();
-    onFinish();
   };
 
   const cancelHandler = (event) => {
-    onFinish();
+    onCancel();
   };
 
   const submitDisabled =
@@ -110,7 +74,7 @@ const ExpenseForm = ({ onSubmitExpense, onFinish }) => {
       </div>
       <button
         onClick={cancelHandler}
-        type="submit"
+        type="button"
         className="border-2 border-black px-4 rounded-lg bg-sky-100 hover:bg-sky-200 disabled:bg-slate-500"
       >
         Cancel
